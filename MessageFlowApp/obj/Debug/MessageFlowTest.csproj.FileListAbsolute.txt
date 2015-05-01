@@ -1,0 +1,2 @@
+C:\Users\giulio\Source\Repos\WinProj\MessageFlow\bin\Debug\MessageFlow.exe.config
+C:\Users\giulio\Source\Repos\WinProj\MessageFlow\MessageFlowApp\bin\Debug\MessageFlow.exe.config
