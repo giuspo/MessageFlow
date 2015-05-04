@@ -10,14 +10,14 @@ namespace MessageFlow
 {
 	public class ActPing : MsgFlowAct
 	{
-		protected override void PreStart()
+		protected override void Init()
 		{
 			Context.System.Scheduler.Schedule(TimeSpan.Zero,
 				TimeSpan.FromMilliseconds(100),
 				Self,
 				new TickMsg());
 
-			base.PreStart();
+			// Subscriber.Subscribe("Pong", );
 		}
 
 		protected override void OnMsgFlowRcv(object objMsg)
@@ -26,6 +26,15 @@ namespace MessageFlow
 			{
 				var tMsg = objMsg as TickMsg;
 
+				Publish.SendEvn("Ping", new PingMsg());
+			}
+			else if(objMsg is EventMsg)
+			{
+				var tMsg = objMsg as EventMsg;
+
+				if(tMsg.EventName.Equals("Pong"))
+				{
+				}
 			}
 		}
 	}

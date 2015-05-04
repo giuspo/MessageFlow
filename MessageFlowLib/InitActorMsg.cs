@@ -8,23 +8,23 @@ namespace MessageFlowLib
 {
 	public class InitActorMsg
 	{
-		public IPubSub PubSub
+		public ISubscriber Subscriber
 		{
 			get;
 			private set;
 		}
 
-		public ISendEvent SendEvn
+		public IPublish Publish
 		{
 			get;
 			private set;
 		}
 
-		public InitActorMsg(IPubSub tPubSub,
-			ISendEvent tSendEvn)
+		public InitActorMsg(ISubscriber tSubscriber,
+			IPublish tPublish)
 		{
-			PubSub = tPubSub; 
-			SendEvn = tSendEvn;
+			Subscriber = tSubscriber; 
+			Publish = tPublish;
 		}
 	}
 }
