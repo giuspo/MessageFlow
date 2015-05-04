@@ -28,8 +28,8 @@ namespace MessageFlowLib
 		{
 			ActorRef tActor = ActorSys.ActorOf<ActorType>();
 
-			tActor.Tell(new InitActorMsg(new PubSubImpl(_tBrokerAct),
-				new SendEventImpl(_tBrokerAct)));
+			tActor.Tell(new InitActorMsg(new SubscriberImpl(_tBrokerAct),
+				new PublishImpl(_tBrokerAct)));
 
 			return new SubscriberRef(tActor);
 		}
@@ -38,8 +38,8 @@ namespace MessageFlowLib
 		{
 			ActorRef tActor = ActorSys.ActorOf<ActorType>(strName);
 
-			tActor.Tell(new InitActorMsg(new PubSubImpl(_tBrokerAct),
-				new SendEventImpl(_tBrokerAct)));
+			tActor.Tell(new InitActorMsg(new SubscriberImpl(_tBrokerAct),
+				new PublishImpl(_tBrokerAct)));
 
 			return new SubscriberRef(tActor);
 		}

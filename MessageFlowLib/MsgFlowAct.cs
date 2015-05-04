@@ -15,13 +15,13 @@ namespace MessageFlowLib
 		{
 		}
 
-		protected IPubSub PubSub
+		protected ISubscriber Subscriber
 		{
 			get;
 			private set;
 		}
 
-		protected ISendEvent SendEvn
+		protected IPublish Publish
 		{
 			get;
 			private set;
@@ -33,8 +33,8 @@ namespace MessageFlowLib
 			{
 				var tMsg = objMsg as InitActorMsg;
 
-				PubSub = tMsg.PubSub;
-				SendEvn = tMsg.SendEvn;
+				Subscriber = tMsg.Subscriber;
+				Publish = tMsg.Publish;
 
 				Init();
 
@@ -51,7 +51,9 @@ namespace MessageFlowLib
 			base.PreStart();
 		}
 
-		protected abstract void Init();
+		protected virtual void Init()
+		{
+		}
 
 		protected abstract void OnMsgFlowRcv(object objMsg);
 	}
