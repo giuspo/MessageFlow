@@ -16,21 +16,21 @@ namespace MessageFlow
 				TimeSpan.FromMilliseconds(100),
 				Self,
 				new TickMsg());
-
-			// Subscriber.Subscribe("Pong", );
+			
+			Subscriber.Subscribe("Pong", SelfAct);
 		}
 
 		protected override void OnMsgFlowRcv(object objMsg)
 		{
 			if(objMsg is TickMsg)
 			{
-				var tMsg = objMsg as TickMsg;
+				var tMsg = (TickMsg)objMsg;
 
 				Publish.SendEvn("Ping", new PingMsg());
 			}
 			else if(objMsg is EventMsg)
 			{
-				var tMsg = objMsg as EventMsg;
+				var tMsg = (EventMsg)objMsg;
 
 				if(tMsg.EventName.Equals("Pong"))
 				{

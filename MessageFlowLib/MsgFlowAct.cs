@@ -11,10 +11,6 @@ namespace MessageFlowLib
 	{
 		private bool bInitOk = false;
 
-		protected MsgFlowAct() : base()
-		{
-		}
-
 		protected ISubscriber Subscriber
 		{
 			get;
@@ -27,11 +23,23 @@ namespace MessageFlowLib
 			private set;
 		}
 
+		protected SubscriberRef SelfAct
+		{
+			get
+			{
+				return new SubscriberRef(Self);
+			}
+		}
+
+		protected MsgFlowAct() : base()
+		{
+		}
+
 		protected sealed override void OnReceive(object objMsg)
 		{
 			if(objMsg is InitActorMsg)
 			{
-				var tMsg = objMsg as InitActorMsg;
+				var tMsg = (InitActorMsg)objMsg;
 
 				Subscriber = tMsg.Subscriber;
 				Publish = tMsg.Publish;

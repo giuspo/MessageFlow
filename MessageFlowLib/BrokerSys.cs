@@ -23,7 +23,7 @@ namespace MessageFlowLib
 		{
 			if(objMsg is SubscribeMsg)
 			{
-				var tSubMsg = objMsg as SubscribeMsg;
+				var tSubMsg = (SubscribeMsg)objMsg;
 				bool bIskeyFind = _rgtEventSubscriberList.ContainsKey(tSubMsg.EventName);
 
 				if(!bIskeyFind)
@@ -56,7 +56,7 @@ namespace MessageFlowLib
 			}
 			else if(objMsg is UnSubscribeMsg)
 			{
-				var tUnSubMsg = objMsg as SubscribeMsg;
+				var tUnSubMsg = (SubscribeMsg)objMsg;
 				bool bIskeyFind = _rgtEventSubscriberList.ContainsKey(tUnSubMsg.EventName);
 
 				if(bIskeyFind)
@@ -78,7 +78,7 @@ namespace MessageFlowLib
 			}
 			else if(objMsg is EventMsg)
 			{
-				var tEventMsg = objMsg as EventMsg;
+				var tEventMsg = (EventMsg)objMsg;
 				bool bIskeyFind = _rgtEventSubscriberList.ContainsKey(tEventMsg.EventName);
 
 				if(!bIskeyFind)
@@ -94,7 +94,7 @@ namespace MessageFlowLib
 			}
 			else if(objMsg is DeadLetter)
 			{
-				var tDeadMsg = objMsg as DeadLetter;
+				var tDeadMsg = (DeadLetter)objMsg;
 
 				foreach(var rgtActor in _rgtEventSubscriberList)
 				{

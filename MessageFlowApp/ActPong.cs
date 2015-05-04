@@ -11,7 +11,10 @@ namespace MessageFlow
 	{
 		protected override void OnMsgFlowRcv(object objMsg)
 		{
-
+			if(objMsg is EventMsg)
+			{
+				var tMsg = (EventMsg)objMsg;
+			}
 		}
 	}
 }
