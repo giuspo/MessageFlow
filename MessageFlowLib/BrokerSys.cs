@@ -10,11 +10,11 @@ namespace MessageFlowLib
 {
 	public class BrokerSys : UntypedActor
 	{
-		private Dictionary<string, List<ActorRef>> _rgtEventSubscriberList;
+		private Dictionary<string, List<IActorRef>> _rgtEventSubscriberList;
 
 		protected override void PreStart()
 		{
-			_rgtEventSubscriberList = new Dictionary<string, List<ActorRef>>();
+			_rgtEventSubscriberList = new Dictionary<string, List<IActorRef>>();
 
 			base.PreStart();
 		}
@@ -29,7 +29,7 @@ namespace MessageFlowLib
 				if(!bIskeyFind)
 				{
 					// SG: Event doesn't exist
-					var rgtActorList = new List<ActorRef>();
+					var rgtActorList = new List<IActorRef>();
 
 					// SG: Create new Actor Subscriber List for this Event
 					rgtActorList.Add(Sender);
@@ -42,7 +42,7 @@ namespace MessageFlowLib
 				else
 				{
 					// SG: Event already exists
-					IList<ActorRef> rgtActorList = _rgtEventSubscriberList[tSubMsg.EventName];
+					IList<IActorRef> rgtActorList = _rgtEventSubscriberList[tSubMsg.EventName];
 					bool bIsActorFind = rgtActorList.Contains(Sender);
 
 					if(!bIsActorFind)
@@ -62,7 +62,7 @@ namespace MessageFlowLib
 				if(bIskeyFind)
 				{
 					// SG: Event already exists
-					IList<ActorRef> rgtActorList = _rgtEventSubscriberList[tUnSubMsg.EventName];
+					IList<IActorRef> rgtActorList = _rgtEventSubscriberList[tUnSubMsg.EventName];
 					bool bIsActorFind = rgtActorList.Remove(Sender);
 
 					if(bIsActorFind)

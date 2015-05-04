@@ -9,9 +9,9 @@ namespace MessageFlowLib
 {
 	public class PublishImpl : IPublish
 	{
-		private ActorRef _tBrokerAct;
+		private IActorRef _tBrokerAct;
 
-		public PublishImpl(ActorRef tBrokerAct)
+		public PublishImpl(IActorRef tBrokerAct)
 		{
 			_tBrokerAct = tBrokerAct;
 		}

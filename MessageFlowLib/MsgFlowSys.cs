@@ -10,7 +10,7 @@ namespace MessageFlowLib
 {
 	public class MsgFlowSys
 	{
-		private ActorRef _tBrokerAct;
+		private IActorRef _tBrokerAct;
 
 		public ActorSystem ActorSys
 		{
@@ -26,7 +26,7 @@ namespace MessageFlowLib
 
 		public SubscriberRef CreateSub<ActorType>() where ActorType : MsgFlowAct, new()
 		{
-			ActorRef tActor = ActorSys.ActorOf<ActorType>();
+			IActorRef tActor = ActorSys.ActorOf<ActorType>();
 
 			tActor.Tell(new InitActorMsg(new SubscriberImpl(_tBrokerAct),
 				new PublishImpl(_tBrokerAct)));
@@ -36,7 +36,7 @@ namespace MessageFlowLib
 
 		public SubscriberRef CreateSub<ActorType>(string strName) where ActorType : MsgFlowAct, new()
 		{
-			ActorRef tActor = ActorSys.ActorOf<ActorType>(strName);
+			IActorRef tActor = ActorSys.ActorOf<ActorType>(strName);
 
 			tActor.Tell(new InitActorMsg(new SubscriberImpl(_tBrokerAct),
 				new PublishImpl(_tBrokerAct)));

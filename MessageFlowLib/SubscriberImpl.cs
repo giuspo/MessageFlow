@@ -9,9 +9,9 @@ namespace MessageFlowLib
 {
 	public class SubscriberImpl : ISubscriber
 	{
-		private ActorRef _tBrokerAct;
+		private IActorRef _tBrokerAct;
 
-		public SubscriberImpl(ActorRef tBrokerAct)
+		public SubscriberImpl(IActorRef tBrokerAct)
 		{
 			_tBrokerAct = tBrokerAct;
 		}

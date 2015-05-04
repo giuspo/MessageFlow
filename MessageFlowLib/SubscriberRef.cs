@@ -9,13 +9,13 @@ namespace MessageFlowLib
 {
 	public class SubscriberRef
 	{
-		public ActorRef SubRef
+		public IActorRef SubRef
 		{
 			get;
 			private set;
 		}
 
-		public SubscriberRef(ActorRef tActor)
+		public SubscriberRef(IActorRef tActor)
 		{
 			SubRef = tActor;
 		}
