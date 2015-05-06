@@ -1,4 +1,5 @@
 ﻿using Akka.Actor;
+using Akka.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace MessageFlowLib
 
 		public MsgFlowSys(string strName)
 		{
+			ConfigurationFactory.ParseString();
+
 			ActorSys = ActorSystem.Create(strName);
 			_tBrokerAct = ActorSys.ActorOf<BrokerSys>(strName + ".Broker");
 		}

@@ -1,4 +1,5 @@
 ﻿using Akka.Actor;
+using Akka.Event;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,17 @@ namespace MessageFlowLib
 {
 	public abstract class MsgFlowAct : UntypedActor
 	{
+		private readonly ILoggingAdapter _tLog = Context.GetLogger();
+
 		private bool bInitOk = false;
+
+		protected ILoggingAdapter Log
+		{
+			get
+			{
+				return _tLog;
+			}
+		}
 
 		protected ISubscriber Subscriber
 		{
